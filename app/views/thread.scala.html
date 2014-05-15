@@ -1,16 +1,16 @@
-@(thread:Thread,op_post:Post,last_posts:List[Post],hidden:Boolean,show_number:Int)
+@(thread:models.Thread,hidden:Boolean,show_number:Int)
 <div class="thread">
-    @post(op_post)
+    @post(thread.first_post)
     <br>
     <p>There are @thread.posts_number posts</p>
     <br>
     @if(hidden) {
-       @for(my_post <- last_posts.takeRight(show_number)) {
+       @for(my_post <- thread.last_posts.takeRight(show_number)) {
            @post(my_post)
            <br>
        }
     } else {
-       @for(my_post <- last_posts) {
+       @for(my_post <- thread.last_posts) {
            @post(my_post)
            <br>
        }

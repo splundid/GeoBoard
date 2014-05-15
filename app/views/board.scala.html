@@ -1,0 +1,8 @@
+@(board:String, threads: Seq[models.Thread])
+@main(board) {
+        @form(board)
+        @for(my_thread <- threads) {
+            @thread(my_thread, true, 5)
+            <br>
+        }
+}
